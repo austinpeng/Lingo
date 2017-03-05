@@ -1,0 +1,30 @@
+{
+  "name": "gradescan",
+  "version": "1.0.0",
+  "description": "This is a description of gradescan.",
+  "main": "app,js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/austinpenguin/GradeScan.git"
+  },
+  "keywords": [
+    "gradescan"
+  ],
+  "author": "Austin Peng",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/austinpenguin/GradeScan/issues"
+  },
+  "homepage": "https://github.com/austinpenguin/GradeScan#readme",
+  "dependencies": {
+    "express": "^4.15.0",
+    "request": "^2.80.0",
+    "tesseract.js": "^1.0.10"
+  }
+}
