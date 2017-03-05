@@ -12,13 +12,12 @@
 <body>
 <script>
     var input = document.getElementById('image-input');
+    var text = "";
     input.onchange = function(event){
         var image = input.files[0];
-        debugger;
         Tesseract.recognize(image)
          .progress(function  (p) { console.log('progress', p)    })
-         .then(function (result) { console.log('result', result); alert(result);});
-        
+         .then(function (result) { console.log('result', result); text = result.text;});
     }
 </script>
 </body>
