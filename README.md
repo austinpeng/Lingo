@@ -1,0 +1,2 @@
+# GradeScan
+blueprint project
