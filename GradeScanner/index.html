@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang = "en">
+<head>
+    <link href="css.css" rel="stylesheet" type="text/css" />
+	<meta charset = "UTF-8">
+	<title>GradeScan</title>
+</head>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src='https://cdn.rawgit.com/naptha/tesseract.js/1.0.10/dist/tesseract.js'></script>
+<input type="file" id="image-input" accept="image/*" capture="camera">
+<img id="frame">
+<body>
+<script>
+    var input = document.getElementById('image-input');
+    input.onchange = function(event){
+        var image = input.files[0];
+        debugger;
+        Tesseract.recognize(image)
+         .progress(function  (p) { console.log('progress', p)    })
+         .then(function (result) { console.log('result', result); alert(result);});
+        
+    }
+</script>
+</body>
+</html>
