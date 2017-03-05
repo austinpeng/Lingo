@@ -1,24 +1,132 @@
 <!doctype html>
 <html lang = "en">
-<head>
-    <link href="css.css" rel="stylesheet" type="text/css" />
-	<meta charset = "UTF-8">
-	<title>GradeScan</title>
-</head>
-<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
-<script src='https://cdn.rawgit.com/naptha/tesseract.js/1.0.10/dist/tesseract.js'></script>
-<input type="file" id="image-input" accept="image/*" capture="camera">
-<img id="frame">
-<body>
-<script>
-    var input = document.getElementById('image-input');
-    var text = "";
-    input.onchange = function(event){
-        var image = input.files[0];
-        Tesseract.recognize(image)
-         .progress(function  (p) { console.log('progress', p)    })
-         .then(function (result) { console.log('result', result); text = result.text;});
-    }
-</script>
-</body>
+    
+    <head>
+        <link href="css.css" rel="stylesheet" type="text/css" />
+        <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <script src='https://cdn.rawgit.com/naptha/tesseract.js/1.0.10/dist/tesseract.js'></script>
+
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        
+        <script src="https://www.google.com/jsapi?key=AIzaSyDymgG1qkr1N6zfmV7e5cHaP7VxDqQzv8I"></script>
+        
+        <script src='https://code.responsivevoice.org/responsivevoice.js'></script>
+        
+        <meta charset = "UTF-8">
+        <title>GradeScan</title>
+    </head>
+    
+    <body>
+        
+        <div id="first-container">
+            
+                <div id="logo">
+                    <img src="../../lingo.png">
+                </div>
+            
+                <div id="header-text">
+                    <h1>Meet Lingo. <br> Your next language buddy.</h1>
+                </div>
+        </div>
+        
+        <div id="second-container">
+        
+            
+            <div id="title">
+                
+                <h1>Try it out!</h1>
+                
+            </div>
+            
+            <div id="upload-container">
+                
+                <label class="btn btn-default btn-file" style="width:150px; font-family:avenir;font-weight:500;" id="upload">
+
+                Upload an Image <input id="new-file" type="file" style="display: none;">
+
+                </label>
+
+                <p id="filename">No image selected</p>
+            
+            </div>
+            
+            
+            <div id="result-text-container">
+                
+                <h2>Your result is:<br></h2>
+                <p id="result-text"></p>
+            
+<!--                <input onclick="responsiveVoice.speak('Hello World');" type='button' value='🔊 Play' />-->
+            </div>
+            
+            <iframe src="https://translate.yandex.com"></iframe>
+            
+            
+        </div>
+        
+        
+        
+        <script>
+            
+//            function speak(text, callback) {
+//                var u = new SpeechSynthesisUtterance();
+//                u.text = text;
+//                u.lang = 'en-US'; //LANGUAGE OF TEXT
+//
+//                u.onend = function () {
+//                    if (callback) {
+//                        callback();
+//                    }
+//                };
+//
+//                u.onerror = function (e) {
+//                    if (callback) {
+//                        callback(e);
+//                    }
+//                };
+//
+//                speechSynthesis.speak(u);
+//            }
+            
+            var input = document.getElementById("new-file");
+            var text = "";
+            input.onchange = function(event){
+                var image = input.files[0];
+                Tesseract.recognize(image)
+                 .progress(function  (p) { console.log('progress', p)    })
+                 .then(function (result) { console.log('result', result);
+                                          text = result.text;
+                                         document.getElementById("result-text").innerHTML=text;
+                                         document.getElementById("result-text-container").style.display="block";
+                                         $.ajax("https://translation.googleapis.com/language/translate/v2?parameters",{
+                                              data:{
+                                                  key:"AIzaSyDymgG1qkr1N6zfmV7e5cHaP7VxDqQzv8I",
+                                                  source:"en",
+                                                  target:"es",
+                                                  q:text
+                                              }
+                                          }).done(function(data){
+                                              alert(data.translations[0].translatedText)
+                                          })
+                                          
+                                            
+                                         });
+                       
+                       
+                
+                var filename = input.files[0].name;
+                document.getElementById("filename").innerHTML=filename;
+                
+            }
+        </script>
+
+    </body>
+    
 </html>
