@@ -2,7 +2,22 @@ body {
     margin: 0 !important;
     padding: 0 !important;
 }
-
+#header{
+    position:fixed;
+    background-color:white;
+    width:275px;
+    height:50px;
+    text-align:center;
+    border-bottom-right-radius: 16px;
+    font-size:16px;
+    font-family:avenir;
+    border-right: 1px gray solid;
+    border-bottom: 1px gray solid;
+}
+#header-text{
+    position:relative;
+    top:15px;
+}
 #first-container{
     font-family:avenir;
     background-image: url("lingobackground.jpg");
