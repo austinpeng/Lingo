@@ -55,8 +55,15 @@ img{
     text-align: center;
 }
 #result-text-container{
-    padding-top:75px;
+    position:relative;
+    top:50px;
     text-align: center;
     display:none;
     margin: 0 auto;
+    border: 1px gray solid;
+    background-color:transparent;
+    border-radius:16px;
+    width:500px;
+    padding:0px 20px 10px 20px;
+    font-family:avenir;
 }
