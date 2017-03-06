@@ -1,6 +1,7 @@
 body {    
     margin: 0 !important;
     padding: 0 !important;
+    font-family:avenir !important;
 }
 #header{
     position:fixed;
@@ -10,7 +11,6 @@ body {
     text-align:center;
     border-bottom-right-radius: 16px;
     font-size:16px;
-    font-family:avenir;
     border-right: 1px gray solid;
     border-bottom: 1px gray solid;
 }
@@ -53,6 +53,11 @@ img{
     margin: 0 auto;
     font-weight:400;
     font-family: avenir;
+}
+#info{
+    text-align:center;
+    margin: 10px auto;
+    font-size:125%;
 }
 #upload-container{
     top:50px;
